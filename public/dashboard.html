@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Dashboard - Admin Panel</title>
+    <meta http-equiv="" name="viewport" content="width=device-width" />
+   <!-- <script src="https://cdn.jsdelivr.net/gh/c-kick/mobileConsole/hnl.mobileconsole.min.js" type="text/javascript" charset="utf-8"></script> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css" type="text/css" media="all" />
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+</head>
+<body>
+
+    <header>
+        <h3>Dashboard</h3>
+        <span class="button-back settings-btn">
+            <span class="material-symbols-outlined">Settings</span></span>
+    </header>
+
+    <section class="posts-sec">
+        <h1>Your posts</h1>
+        <div class="posts">
+           
+        </div>
+    </section>
+    
+    <span class="add-btn">
+        <span class="material-symbols-outlined">add</span>
+    </span>
+    <script src="js/firebase.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
