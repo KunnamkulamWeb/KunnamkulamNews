@@ -1,10 +1,12 @@
-
+var url = decodeURI(window.location.href)
 
 const menuBtn = document.querySelector(".menuBtn")
 menuBtn.addEventListener("click", ()=>{
   document.querySelector(".sidenav").style.width = "240px"
 })
 let search = false
+let newsTitle
+let newsBody
 const closeNav = () =>{
   document.querySelector(".sidenav").style.width = ""
 }
@@ -49,10 +51,12 @@ db.ref('blogs/' + newsId).once('value', (snapshot)=> {
         document.querySelector('.tags').style.display = 'block'
         document.querySelector('.news-info').style.display = 'flex'
         document.querySelector('.title').innerHTML = blog.title
+        newsTitle = blog.title
         document.querySelector('.share-news').style.display = 'block'
     document.querySelector('.location').innerHTML = `Home > ${blog.title}`
     document.querySelector('.date').innerHTML = blog.publishedAt
     document.querySelector('.news-article').innerHTML = blog.article
+    newsBody = blog.article
     if (blog.imagePath != null) {
         document.querySelector('.news-image').src = blog.imagePath
     } else {
@@ -114,3 +118,37 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
     })
 })
 
+function shareOnFacebook(){
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank');
+}
+
+function shareOnWhatsapp(){
+    window.open('whatsapp://send?text=' + url, '_blank');
+}
+function shareOnTwitter() {
+      window.open('https://twitter.com/intent/tweet?url=' + url, '_blank');
+}
+
+function shareOnLinkedIn() {
+      window.open('https://www.linkedin.com/shareArticle?url=' + url, '_blank');
+}
+function shareViaEmail() {
+      var subject = newsTitle
+      var body = newsBody
+      window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+    }
+
+db.ref('ads/banner-ad-1').once('value', (snapshot)=>{
+    var ads1Data = snapshot.val()
+    if(ads1Data){
+        var bannerAd1 = document.getElementById('ba-1')
+        bannerAd1.src = ads1Data.image
+    }
+})
+db.ref('ads/sq-ad-1').once('value', (snapshot)=>{
+    var sqAds1Data = snapshot.val()
+    if(sqAds1Data){
+        var sqAd1 = document.getElementById('sq-1')
+        sqAd1.src = sqAds1Data.image
+    }
+})

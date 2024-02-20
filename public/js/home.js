@@ -266,3 +266,26 @@ document.querySelector('.searchBtn').addEventListener('click', ()=>{
     }
         
 })
+
+
+db.ref('ads/banner-ad-1').once('value', (snapshot)=>{
+    var ads1Data = snapshot.val()
+    if(ads1Data){
+        var bannerAd1 = document.getElementById('ba-1')
+        bannerAd1.src = ads1Data.image
+    }
+})
+db.ref('ads/banner-ad-2').once('value', (snapshot)=>{
+    var ads2Data = snapshot.val()
+    if(ads2Data){
+        var bannerAd2 = document.getElementById('ba-2')
+        bannerAd2.src = ads2Data.image
+    }
+})
+db.ref('ads/sq-ad-1').once('value', (snapshot)=>{
+    var sqAds1Data = snapshot.val()
+    if(sqAds1Data){
+        var sqAd1 = document.getElementById('sq-1')
+        sqAd1.src = sqAds1Data.image
+    }
+})

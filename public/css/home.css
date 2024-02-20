@@ -10,7 +10,6 @@ p, h1, h2, h3, h4, h5, h6, a {
     margin: 0;
     padding: 0;
     text-decoration: none;
-    color: black;
 }
 .material-symbols-outlined {
     margin: 0;
@@ -668,6 +667,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
+    color: black;
 }
 .simple-news-article {
     margin: 0;
@@ -697,6 +697,7 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 18px;
+    object-fit: cover;
 }
 .square-ads {
     height: 270px;
@@ -708,6 +709,12 @@ body {
     justify-content: center;
     text-align: center;
     margin: 0 auto;
+}
+.square-ads img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 footer {
     width: 100%;
