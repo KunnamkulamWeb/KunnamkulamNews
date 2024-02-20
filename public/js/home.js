@@ -1,11 +1,3 @@
-const menuBtn = document.querySelector(".menuBtn")
-menuBtn.addEventListener("click", ()=>{
-  document.querySelector(".sidenav").style.width = "240px"
-})
-
-const closeNav = () =>{
-  document.querySelector(".sidenav").style.width = ""
-}
 
 const blogSection = document.querySelector('.news')
 
@@ -107,7 +99,7 @@ const createNews = (blog) =>{
                         </div>
                         <div class="simple-news-content-container">
                             <div class="simple-news-title-container">
-                                <p class="simple-news-title">${blog.title}</p>
+                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
                             </div>
                             <div class="simple-news-article-container">
                                 <p class="simple-news-article">${blog.article}</p>
@@ -121,16 +113,7 @@ const createNews = (blog) =>{
 }
 
 
-document.querySelector('.searchBtn').addEventListener('click', ()=>{
-    if(window.innerWidth < 768){
-        document.querySelector('.menuBtn').style.display = 'none'
-        document.querySelector('.logoImg').style.display = 'none'
-        document.querySelector('.searchBox').style.width = '100%'
-        document.querySelector('.searchBox').style.background = '#f4f4f4'
-        document.querySelector('.search-input').style.display = 'block'
-    }
-        
-})
+
 
 function shuffleArray(array) {
   const shuffledArray = [];
@@ -164,7 +147,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-            <p class="simple-news-title">${blog.title}</p>
+                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -187,7 +170,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-            <p class="simple-news-title">${blog.title}</p>
+                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -210,7 +193,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-            <p class="simple-news-title">${blog.title}</p>
+                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -233,7 +216,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-            <p class="simple-news-title">${blog.title}</p>
+                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -248,3 +231,38 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
 })
 
 
+const menuBtn = document.querySelector(".menuBtn")
+menuBtn.addEventListener("click", ()=>{
+  document.querySelector(".sidenav").style.width = "240px"
+})
+let search = false
+const closeNav = () =>{
+  document.querySelector(".sidenav").style.width = ""
+}
+
+
+if(window.innerWidth >= 768){
+    document.querySelector('.left').classList.remove('nullspace')
+}
+document.querySelector('.search-input').addEventListener('input', ()=>{
+    search = true
+})
+document.querySelector('.searchBtn').addEventListener('click', ()=>{
+    if(window.innerWidth < 768){
+        if(!search){
+        document.querySelector('.menuBtn').style.display = 'none'
+        document.querySelector('.logoImg').style.display = 'none'
+        document.querySelector('.nullspace').style.display = 'none'
+        document.querySelector('.searchBox').style.width = '100%'
+        document.querySelector('.searchBox').style.background = '#f4f4f4'
+        document.querySelector('.search-input').style.display = 'block'
+    }else{
+        var searchTxt = document.querySelector('.search-input').value
+        location.href = `/search/${searchTxt}`
+    }
+    }else{
+        var searchTxt = document.querySelector('.search-input').value
+        location.href = `/search/${searchTxt}`
+    }
+        
+})

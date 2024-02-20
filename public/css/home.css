@@ -10,6 +10,7 @@ p, h1, h2, h3, h4, h5, h6, a {
     margin: 0;
     padding: 0;
     text-decoration: none;
+    color: black;
 }
 .material-symbols-outlined {
     margin: 0;
@@ -661,6 +662,12 @@ body {
     font-size: 1.1em;
     font-weight: 800;
     line-height: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 .simple-news-article {
     margin: 0;

@@ -53,6 +53,10 @@ app.get('/:blog/editor', (req,res)=>{
     res.sendFile(path.join(initial_path, "editor.html"))
 })
 
+app.get('/search/:searchContent', (req, res)=>{
+    res.sendFile(path.join(initial_path, "search.html"))
+})
+
 app.listen(port, ()=>{
   console.log(`listening to the ${port}.....`)
 }) 
