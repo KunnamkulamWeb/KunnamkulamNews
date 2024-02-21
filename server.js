@@ -54,6 +54,34 @@ app.get('/search/:searchContent', (req, res)=>{
     res.sendFile(path.join(initial_path, "search.html"))
 })
 
+
+app.post('/upload', (req, res)=>{
+    const {fileName, htmlCode} = req.body
+    
+    const directoryPath = 'public/blogs/'
+    
+    const filePath = directoryPath + fileName
+    
+    if(!fs.existsSync(directoryPath)){
+        fs.mkdirSync(directoryPath, {recursive: true})
+    }
+    
+    fs.writeFile(filePath, htmlCode, (err) => {
+        if(err){
+            alert(err)
+        res.status(500).send('Failed to upload html file')
+        }else{
+            console.log('Html uploaded success')
+            res.sendStatus(200)
+        }
+        
+    })
+})
+
+
+
+
+
 app.listen(port, ()=>{
   console.log(`listening to the ${port}.....`)
 }) 
