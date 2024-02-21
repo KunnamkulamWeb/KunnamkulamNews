@@ -45,9 +45,6 @@ app.get('/sports', (req, res) =>{
 app.get('/obituary', (req, res) =>{
     res.sendFile(path.join(initial_path, "category.html"))
 })
-app.get('/:blog', (req, res) =>{
-    res.sendFile(path.join(initial_path, "blog.html"))
-})
 
 app.get('/:blog/editor', (req,res)=>{
     res.sendFile(path.join(initial_path, "editor.html"))
