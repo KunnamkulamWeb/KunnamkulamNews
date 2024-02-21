@@ -52,11 +52,15 @@ db.ref('blogs/' + newsId).once('value', (snapshot)=> {
         document.querySelector('.news-info').style.display = 'flex'
         document.querySelector('.title').innerHTML = blog.title
         newsTitle = blog.title
+      document.head.querySelector('title').textContent =  newsTitle
+      document.head.querySelector('meta[property="og:title"]').content = newsTitle
+      
         document.querySelector('.share-news').style.display = 'block'
     document.querySelector('.location').innerHTML = `Home > ${blog.title}`
     document.querySelector('.date').innerHTML = blog.publishedAt
     document.querySelector('.news-article').innerHTML = blog.article
     newsBody = blog.article
+      document.head.querySelector('meta[property="og:description"]').content = newsBody
     if (blog.imagePath != null) {
         document.querySelector('.news-image').src = blog.imagePath
       document.head.querySelector('meta[property="og:image"]').content = blog.imagePath
