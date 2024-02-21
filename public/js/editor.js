@@ -427,23 +427,31 @@ function createHtml(newsTitle, newsBody, newsImage){
     
     `
     const blogCount = totalNumOfBlogs + 1
-    const fileName = `blog_post_${blogCount}`
-    alert(fileName)
+    const fileName = `blog_post_${blogCount}.html`
     
     if(htmlCode && fileName){
-        const blob = new Blob([htmlCode], {type: 'text/html'})
         
-        var storageRef = stRef.ref('blogFiles/' + fileName + '.html')
-        
-        storageRef.put(blob).then((snapshot)=>{
-            console.log('Html uploaded')
-        }).catch((err)=>{
-            console.log('Error uploading html', err)
+        fetch('upload', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({fileName, htmlCode})
+        })
+        .then(response =>{
+            if(!response.ok){
+                throw new Error('Error while uploading html file.')
+            }
+            alert('Html uploaded successfully')
+        })
+        .catch(error =>{
+            alert(error)
         })
         
-        var htmlFileName = fileName + '.html'
         
-        return htmlFileName
+        var htmlFilePath = 'blogs/' + fileName
+        
+        return htmlFilePath
     }
 }
 

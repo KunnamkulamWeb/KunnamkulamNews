@@ -1,3 +1,7 @@
+
+document.body.style.pointerEvents = 'auto'
+
+
 var url = decodeURI(window.location.href)
 
 const menuBtn = document.querySelector(".menuBtn")
