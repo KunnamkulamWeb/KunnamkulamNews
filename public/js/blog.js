@@ -59,6 +59,7 @@ db.ref('blogs/' + newsId).once('value', (snapshot)=> {
     newsBody = blog.article
     if (blog.imagePath != null) {
         document.querySelector('.news-image').src = blog.imagePath
+      document.head.querySelector('meta[property="og:image"]').content = blog.imagePath
     } else {
         document.querySelector('.news-image').style.display = 'none'
     }
