@@ -43,38 +43,8 @@ document.querySelector('.searchBtn').addEventListener('click', ()=>{
 
 
 let newsId = decodeURI(location.pathname.split('/').pop())
-db.ref('blogs/' + newsId).once('value', (snapshot)=> {
-    document.body.querySelector('#overlayLoading').classList.remove('show')
-    document.body.style.pointerEvents = "auto"
-    const blog = snapshot.val()
-    if(blog){
-        document.querySelector('.tags').style.display = 'block'
-        document.querySelector('.news-info').style.display = 'flex'
-        document.querySelector('.title').innerHTML = blog.title
-        newsTitle = blog.title
-      document.head.querySelector('title').textContent =  newsTitle
-      document.head.querySelector('meta[property="og:title"]').content = newsTitle
-      
-        document.querySelector('.share-news').style.display = 'block'
-    document.querySelector('.location').innerHTML = `Home > ${blog.title}`
-    document.querySelector('.date').innerHTML = blog.publishedAt
-    document.querySelector('.news-article').innerHTML = blog.article
-    newsBody = blog.article
-      document.head.querySelector('meta[property="og:description"]').content = newsBody
-    if (blog.imagePath != null) {
-        document.querySelector('.news-image').src = blog.imagePath
-      document.head.querySelector('meta[property="og:image"]').content = blog.imagePath
-    } else {
-        document.querySelector('.news-image').style.display = 'none'
-    }
-    }
-    
 
-})
-.then(()=> {})
-.catch((err)=> {
-    alert(err.Message)
-})
+
 let blogSection = document.querySelector('.faveNewsSec')
 let mostPopular = document.querySelector('.mostNewsSec')
 db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
@@ -95,7 +65,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
+                                <a href="${blog.htmlPath}" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -110,7 +80,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
+                                <a href="${blog.htmlPath}" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>

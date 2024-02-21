@@ -64,7 +64,7 @@ const createBlog = (blog)  => {
                                 <img src="${image}" alt="">
                             </div>
                             <div class="news-container">
-                                <a href="${blog.id}" id="title" >${blog.title}</a>
+                                <a href="${blog.htmlPath}" id="title" >${blog.title}</a>
                                 <p class="article">${blog.article}</p>
                             </div>
                             <div class="news-card-footer">
@@ -99,7 +99,7 @@ const createNews = (blog) =>{
                         </div>
                         <div class="simple-news-content-container">
                             <div class="simple-news-title-container">
-                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
+                                <a href="${blog.htmlPath}"" class="simple-news-title">${blog.title}</a>
                             </div>
                             <div class="simple-news-article-container">
                                 <p class="simple-news-article">${blog.article}</p>
@@ -147,7 +147,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
+                                <a href="${blog.htmlPath}" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -170,7 +170,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
+                                <a href="${blog.htmlPath}" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -193,7 +193,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
+                                <a href="${blog.htmlPath}" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
@@ -216,7 +216,7 @@ db.ref('blogs').limitToLast(6).once('value', (snapshot)=> {
             </div>
             <div class="simple-news-content-container">
             <div class="simple-news-title-container">
-                                <a href="${blog.id}"" class="simple-news-title">${blog.title}</a>
+                                <a href="${blog.htmlPath}" class="simple-news-title">${blog.title}</a>
             </div>
             <div class="simple-news-article-container">
             <p class="simple-news-article">${blog.article}</p>
